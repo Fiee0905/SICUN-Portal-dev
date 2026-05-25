@@ -73,6 +73,7 @@ foreach ($file in $requiredFiles) {
 
 $dropName = "test-drop-" + (Get-Date -Format "yyyyMMdd-HHmmss")
 $manifestPath = Join-Path $output "DELIVERY_MANIFEST.md"
+$hermesWorkflowPath = Join-Path $output "docs\HERMES_TEST_WORKFLOW.md"
 $commit = ""
 try {
     $commit = (& git -C $source rev-parse --short HEAD 2>$null)
@@ -110,6 +111,80 @@ Internal Codex coordination files, local logs, build outputs, dependencies,
 Figma exports, bug report work folders, and local environment files are excluded
 according to `.handoffignore`.
 "@ | Set-Content -LiteralPath $manifestPath -Encoding UTF8
+
+@"
+# Hermes Test Team Workflow
+
+This workflow is for the Hermes testing team using:
+
+- Delivery repository: `https://github.com/Fiee0905/SICUN-Portal-delivery.git`
+- Delivery branches: `test-drop/YYYYMMDD-NN`
+
+Hermes should only use the delivery repository and should not access the Codex
+development repository or local development workspace.
+
+## 1. Test Boundary
+
+Hermes tests only the files included in the current delivery branch.
+
+Do not read, request, or depend on Codex internal files such as:
+
+- `PROJECT_MEMORY.md`
+- `TASKS.md`
+- `AGENTS.md`
+- `pm/`
+- `bug-report-*`
+- local logs, Figma exports, or development-only folders
+
+## 2. Start a Test Cycle
+
+1. Pull or check out the latest delivery branch provided by Codex.
+2. Record the exact branch name in all test notes and GitHub Issues.
+3. Deploy or run the project using the files in this branch only.
+4. Execute functional, API, page, regression, and feature coverage tests.
+
+## 3. Report Bugs
+
+Submit bugs in GitHub Issues in the delivery repository.
+
+Use the `Hermes Bug Report` issue template and include:
+
+- Tested branch, for example `test-drop/20260525-05`
+- Severity
+- Environment
+- Reproduction steps
+- Actual result
+- Expected result
+- Screenshots, logs, or API responses
+
+Create one issue per bug. Do not group unrelated bugs into one issue.
+
+## 4. Submit Suggestions
+
+Use the `Hermes Suggestion` issue template for non-blocking improvements.
+
+Suggestions should include:
+
+- Tested branch
+- Background or user scenario
+- Proposed improvement
+- Priority
+- Evidence if available
+
+## 5. Feedback Loop
+
+Codex reads issues from the delivery repository, fixes problems in the
+development repository, and publishes a new delivery branch.
+
+Hermes should retest only after Codex provides the next `test-drop/*` branch.
+
+## 6. Do Not
+
+- Do not modify delivery branch code directly.
+- Do not submit fixes as direct commits to the delivery repository.
+- Do not test against the Codex development repository.
+- Do not omit the tested branch from bug reports.
+"@ | Set-Content -LiteralPath $hermesWorkflowPath -Encoding UTF8
 
 if ($Zip) {
     New-Item -ItemType Directory -Path $ZipRoot -Force | Out-Null

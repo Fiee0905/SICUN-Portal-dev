@@ -26,6 +26,7 @@
 - Cleaned the development workspace by removing generated outputs and local-only artifacts: `backend/target`, `frontend/dist`, dependency folders, logs, runtime `backend/uploads`, historical `bug-report-*` folders, Figma export folders, empty `tools`, and the original bid `.doc` file.
 - Updated `.gitignore` so build outputs, dependency folders, logs, runtime uploads, Figma exports, bug-report folders, and Word documents do not re-enter Git history.
 - Removed `docs/HERMES_TEST_WORKFLOW.md` because Hermes-facing process documents are not owned by the Codex development team. Hermes instructions should live in the delivery repository or GitHub Issue templates; the development repo keeps only Codex-side workflow docs.
+- Delivery export rule corrected: `docs/CODEX_DEV_WORKFLOW.md` is excluded from Hermes delivery drops, and `docs/HERMES_TEST_WORKFLOW.md` is generated into each delivery drop by `scripts/export-test-drop.ps1`.
 
 ## 2026-05-22 Backend bug-report-20260522 BUG-001/BUG-002
 
