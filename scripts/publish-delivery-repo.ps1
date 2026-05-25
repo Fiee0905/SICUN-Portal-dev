@@ -27,7 +27,8 @@ Get-ChildItem -LiteralPath $DeliveryWorktree -Force |
     Where-Object { $_.Name -ne ".git" } |
     Remove-Item -Recurse -Force
 
-Copy-Item -LiteralPath (Join-Path $SourceDrop "*") -Destination $DeliveryWorktree -Recurse -Force
+Get-ChildItem -LiteralPath $SourceDrop -Force |
+    Copy-Item -Destination $DeliveryWorktree -Recurse -Force
 
 git -C $DeliveryWorktree add -A
 git -C $DeliveryWorktree commit -m $CommitMessage
