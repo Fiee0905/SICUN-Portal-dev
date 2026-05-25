@@ -1,0 +1,9 @@
+root=/mnt/d/work2.0/SICUN-Portal_test
+scanned_files=115
+finding_count=4
+material_finding_count=4
+material_findings:
+- [hardcoded_test_account] backend/src/main/resources/application.yml:17 password: edu123456
+- [localhost_external_placeholder] backend/src/main/java/com/edu/portal/auth/controller/AuthController.java:31 String loginUrl = "http://localhost:7001/cas/login?service=" + redirectUri;
+- [hardcoded_test_account] backend/src/main/java/com/edu/portal/auth/controller/AuthController.java:37 User user = userService.authenticate("teacher001", "123456");
+- [localhost_external_placeholder] backend/src/main/java/com/edu/portal/portal/controller/PortalController.java:128 : "http://localhost:7001/course-platform/courses/" + course.getId() + "/launch";

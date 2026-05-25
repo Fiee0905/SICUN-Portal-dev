@@ -1,0 +1,75 @@
+diff --git a/backend/src/main/java/com/edu/portal/auth/controller/AuthController.java b/backend/src/main/java/com/edu/portal/auth/controller/AuthController.java
+index 0000000..0000000 100644
+--- a/backend/src/main/java/com/edu/portal/auth/controller/AuthController.java
++++ b/backend/src/main/java/com/edu/portal/auth/controller/AuthController.java
+@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
+ import jakarta.validation.constraints.NotBlank;
+ import lombok.RequiredArgsConstructor;
++import org.springframework.beans.factory.annotation.Value;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.PostMapping;
+ import org.springframework.web.bind.annotation.RequestBody;
+@@ -26,9 +27,12 @@ public class AuthController {
+ 
+     private final UserService userService;
++
++    @Value("${portal.cas.base-url:}")
++    private String casBaseUrl;
+ 
+     @GetMapping("/cas/login-url")
+     public ApiResponse<Map<String, String>> casLoginUrl(@RequestParam String redirectUri) {
+-        String loginUrl = "http://localhost:7001/cas/login?service=" + redirectUri;
++        String loginUrl = casBaseUrl + "/cas/login?service=" + redirectUri;
+         return ApiResponse.ok(Map.of("loginUrl", loginUrl));
+     }
+ 
+diff --git a/backend/src/main/java/com/edu/portal/portal/controller/PortalController.java b/backend/src/main/java/com/edu/portal/portal/controller/PortalController.java
+index 0000000..0000000 100644
+--- a/backend/src/main/java/com/edu/portal/portal/controller/PortalController.java
++++ b/backend/src/main/java/com/edu/portal/portal/controller/PortalController.java
+@@ -1,6 +1,7 @@
+ package com.edu.portal.portal.controller;
+ 
++import org.springframework.beans.factory.annotation.Value;
+ import com.baomidou.mybatisplus.core.metadata.IPage;
+ import com.edu.portal.auth.AuthSession;
+ import com.edu.portal.cms.entity.CmsContent;
+@@ -24,6 +25,9 @@ public class PortalController {
+ 
+     private final CourseService courseService;
++
++    @Value("${portal.lms.base-url:}")
++    private String lmsBaseUrl;
+ 
+@@ -123,9 +127,12 @@ public class PortalController {
+         if (!canViewCourse(session, course)) {
+             throw new BusinessException(403, "No permission to view this course");
+         }
+-        String launchUrl = course.getLaunchUrl() != null
+-                ? course.getLaunchUrl()
+-                : "http://localhost:7001/course-platform/courses/" + course.getId() + "/launch";
++        String launchUrl = course.getLaunchUrl();
++        if (launchUrl == null || launchUrl.isBlank()) {
++            if (lmsBaseUrl == null || lmsBaseUrl.isBlank()) {
++                throw new BusinessException(500, "LMS_BASE_URL_NOT_CONFIGURED");
++            }
++            launchUrl = lmsBaseUrl + "/course-platform/courses/" + course.getId() + "/launch";
++        }
+         return ApiResponse.ok(Map.of("launchUrl", launchUrl, "expiresAt", LocalDateTime.now().plusMinutes(15)));
+     }
+
+diff --git a/backend/src/main/resources/application.yml b/backend/src/main/resources/application.yml
+index 0000000..0000000 100644
+--- a/backend/src/main/resources/application.yml
++++ b/backend/src/main/resources/application.yml
+@@ -1,3 +1,8 @@
++portal:
++  cas:
++    base-url: ${CAS_BASE_URL:}
++  lms:
++    base-url: ${LMS_BASE_URL:}
++
+ # existing configuration continues below
+
+# 说明：该 patch 为方向性建议，需由开发按实际 application.yml 结构合并。
+# 建议进一步补充：redirectUri/service URL 编码、允许域名白名单、非 local profile 禁止空 CAS_BASE_URL/LMS_BASE_URL。

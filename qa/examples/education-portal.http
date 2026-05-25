@@ -1,0 +1,74 @@
+@baseUrl = http://localhost:8080/api/v1
+@adminToken = replace-with-admin-access-token
+@studentToken = replace-with-student-access-token
+
+### Portal home aggregation
+GET {{baseUrl}}/portal/home
+
+### Current user as anonymous
+GET {{baseUrl}}/users/me
+
+### CAS login URL
+GET {{baseUrl}}/auth/cas/login-url?redirectUri=http://localhost:5173/callback
+
+### CAS callback with mock ticket
+POST {{baseUrl}}/auth/cas/callback
+Content-Type: application/json
+
+{
+  "ticket": "replace-with-mock-ticket",
+  "service": "http://localhost:5173/callback"
+}
+
+### Logout
+POST {{baseUrl}}/auth/logout
+Authorization: Bearer {{studentToken}}
+
+### List public courses
+GET {{baseUrl}}/portal/courses?page=1&size=10&keyword=math
+
+### Get course detail
+GET {{baseUrl}}/portal/courses/replace-with-course-id
+
+### Launch course
+POST {{baseUrl}}/portal/courses/replace-with-course-id/launch
+Authorization: Bearer {{studentToken}}
+Content-Type: application/json
+
+{}
+
+### Admin list CMS articles
+GET {{baseUrl}}/admin/articles?page=1&size=10&status=DRAFT
+Authorization: Bearer {{adminToken}}
+
+### Admin create CMS draft
+POST {{baseUrl}}/admin/articles
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "title": "Test Article",
+  "summary": "Created by QA HTTP example.",
+  "content": "Draft content for API validation.",
+  "status": "DRAFT",
+  "categoryId": 1
+}
+
+### Admin publish CMS article (designed endpoint, may be blocked until implemented)
+POST {{baseUrl}}/admin/articles/replace-with-article-id/publish
+Authorization: Bearer {{adminToken}}
+
+### Admin create course sync job (designed endpoint, may be blocked until implemented)
+POST {{baseUrl}}/admin/course-sync/jobs
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "syncType": "COURSE_CATALOG",
+  "mode": "INCREMENTAL",
+  "termCode": "2026-SPRING"
+}
+
+### Admin get sync job status
+GET {{baseUrl}}/admin/course-sync/jobs/replace-with-job-id
+Authorization: Bearer {{adminToken}}

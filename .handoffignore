@@ -1,0 +1,32 @@
+# Files and directories excluded from Hermes test delivery drops.
+
+.git
+.handoffignore
+.idea
+.vscode
+node_modules
+target
+dist
+coverage
+logs
+tools
+*.log
+
+# Codex/internal coordination files
+AGENTS.md
+PROJECT_MEMORY.md
+TASKS.md
+pm
+figma-CMS
+figma-export
+bug-report-*
+
+# Large/source reference materials not needed for runtime testing
+投标文件技术方案.doc
+*.doc
+*.docx
+
+# Local-only environment files
+*.local
+.env
+.env.*

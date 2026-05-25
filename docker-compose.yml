@@ -1,0 +1,27 @@
+services:
+  mysql:
+    image: mysql:8.3
+    container_name: edu-portal-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+      MYSQL_DATABASE: edu_portal
+      MYSQL_USER: edu
+      MYSQL_PASSWORD: edu123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+  redis:
+    image: redis:7.2
+    container_name: edu-portal-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  mysql-data:

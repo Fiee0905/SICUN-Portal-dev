@@ -1,0 +1,43 @@
+[
+  {
+    "userId": "U10001",
+    "username": "teacher01",
+    "password": "password123",
+    "displayName": "Teacher One",
+    "email": "teacher01@example.edu",
+    "mobile": "13800000001",
+    "departmentCode": "CS",
+    "roles": ["TEACHER"],
+    "attributes": {
+      "employeeNo": "T2026001",
+      "title": "Associate Professor"
+    }
+  },
+  {
+    "userId": "U20001",
+    "username": "student01",
+    "password": "password123",
+    "displayName": "Student One",
+    "email": "student01@example.edu",
+    "mobile": "13900000001",
+    "departmentCode": "CS",
+    "roles": ["STUDENT"],
+    "attributes": {
+      "studentNo": "S2026001",
+      "grade": "2026"
+    }
+  },
+  {
+    "userId": "U30001",
+    "username": "admin01",
+    "password": "password123",
+    "displayName": "Admin One",
+    "email": "admin01@example.edu",
+    "mobile": "13700000001",
+    "departmentCode": "IT",
+    "roles": ["ADMIN", "TEACHER"],
+    "attributes": {
+      "employeeNo": "A2026001"
+    }
+  }
+]

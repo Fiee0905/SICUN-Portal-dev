@@ -1,0 +1,53 @@
+[
+  {
+    "courseId": "CSE-101-2026-SPRING",
+    "courseCode": "CSE101",
+    "courseName": "Introduction to Computer Science",
+    "term": "2026-SPRING",
+    "departmentCode": "CS",
+    "teacherUserId": "U10001",
+    "teacherName": "Teacher One",
+    "credit": 3.0,
+    "hours": 48,
+    "status": "ACTIVE",
+    "capacity": 120,
+    "location": "Main Building 201",
+    "startDate": "2026-03-02",
+    "endDate": "2026-06-26",
+    "updatedAt": "2026-04-25T09:30:00.000Z"
+  },
+  {
+    "courseId": "MATH-201-2026-SPRING",
+    "courseCode": "MATH201",
+    "courseName": "Linear Algebra",
+    "term": "2026-SPRING",
+    "departmentCode": "MATH",
+    "teacherUserId": "U10002",
+    "teacherName": "Teacher Two",
+    "credit": 4.0,
+    "hours": 64,
+    "status": "ACTIVE",
+    "capacity": 90,
+    "location": "Science Hall 106",
+    "startDate": "2026-03-02",
+    "endDate": "2026-06-26",
+    "updatedAt": "2026-04-27T11:00:00.000Z"
+  },
+  {
+    "courseId": "ENG-301-2026-SPRING",
+    "courseCode": "ENG301",
+    "courseName": "Academic Writing",
+    "term": "2026-SPRING",
+    "departmentCode": "ENG",
+    "teacherUserId": "U10003",
+    "teacherName": "Teacher Three",
+    "credit": 2.0,
+    "hours": 32,
+    "status": "SUSPENDED",
+    "capacity": 45,
+    "location": "Liberal Arts 302",
+    "startDate": "2026-03-02",
+    "endDate": "2026-06-26",
+    "updatedAt": "2026-04-20T08:00:00.000Z"
+  }
+]

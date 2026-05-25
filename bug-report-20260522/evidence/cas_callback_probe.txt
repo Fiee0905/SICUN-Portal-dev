@@ -1,0 +1,3 @@
+POST /auth/cas/callback invalid ticket
+HTTP 200
+{"code":0,"message":"success","data":{"accessToken":"dev.Mzp0ZWFjaGVyMDAxOmludGVybmFsOmJmY2Q3NTA2LTI1MzYtNDQwOS1hNzBiLWQ5OGJmNGJjMTc2Ng","refreshToken":"dev.Mzp0ZWFjaGVyMDAxOmludGVybmFsOjU2YTAxYjNhLTkyNjctNGU3Ny1hZmYxLTQ5MjRhMWUxOGY1Nw","expiresIn":7200,"user":{"id":3,"username":"teacher001","displayName":"任课教师","role":"internal","userType":"TEACHER","source":"CAS","status":"ACTIVE","email":"teacher001@sicnu.edu.cn","mobile":"13800000002","organization":"教育科学学院"},"issuedAt":"2026-05-21T12:56:14.395801700Z"},"timestamp":"2026-05-21T12:56:14.395801700Z"}

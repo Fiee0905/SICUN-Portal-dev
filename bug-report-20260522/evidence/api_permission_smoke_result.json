@@ -1,0 +1,170 @@
+{
+  "started_at": "2026-05-21T12:54:49.693813+00:00",
+  "finished_at": "2026-05-21T12:54:49.891824+00:00",
+  "base_url": "http://172.19.192.1:8080/api/v1",
+  "accounts": [
+    "admin",
+    "student",
+    "outside"
+  ],
+  "state": {
+    "public_course_count": 6,
+    "public_course_ids": [
+      8,
+      5,
+      4,
+      3,
+      2
+    ]
+  },
+  "summary": {
+    "pass": 13,
+    "fail": 0,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "case_id": "API-PUB-001",
+      "name": "公开门户首页 /portal/home",
+      "expected": "HTTP 200 且返回门户核心区块",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "keys=banners,colleges,courses,externalLinks,friendLinks,newCourses,news,notices,pageConfig,quickLinks,siteConfig,teachers,topics",
+      "path": "/portal/home",
+      "elapsed_ms": 90.8
+    },
+    {
+      "case_id": "API-PUB-002",
+      "name": "课程检索 /portal/courses",
+      "expected": "HTTP 200 且分页 records 可解析，至少返回公开课程",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "records=6, total=6",
+      "path": "/portal/courses?page=1&size=10",
+      "elapsed_ms": 9.5
+    },
+    {
+      "case_id": "API-PUB-003",
+      "name": "搜索关键词课程检索 keyword=教师教育",
+      "expected": "HTTP 200 且搜索接口可用",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "keyword=教师教育, records=0, total=0",
+      "path": "/portal/courses?keyword=%E6%95%99%E5%B8%88%E6%95%99%E8%82%B2&page=1&size=10",
+      "elapsed_ms": 7.7
+    },
+    {
+      "case_id": "API-PUB-004",
+      "name": "搜索关键词配置 /portal/search-keywords",
+      "expected": "HTTP 200 且返回 list",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "keyword_count=5",
+      "path": "/portal/search-keywords",
+      "elapsed_ms": 7.2
+    },
+    {
+      "case_id": "AUTH-001",
+      "name": "admin 未登录访问后台课程",
+      "expected": "HTTP 401",
+      "result": "PASS",
+      "http_status": 401,
+      "body_code": 401,
+      "details": "{\"code\":401,\"message\":\"AUTH_REQUIRED\",\"data\":null,\"timestamp\":\"2026-05-21T12:54:50.556970500Z\"}",
+      "path": "/admin/courses?page=1&size=5",
+      "elapsed_ms": 2.2
+    },
+    {
+      "case_id": "AUTH-002",
+      "name": "admin 登录",
+      "expected": "HTTP 200 且返回 accessToken/user.role=admin",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "role=admin, token_prefix=dev.MTph",
+      "path": "/auth/login",
+      "elapsed_ms": 18.3
+    },
+    {
+      "case_id": "AUTH-003",
+      "name": "admin 登录后访问后台课程",
+      "expected": "HTTP 200",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "records=5",
+      "path": "/admin/courses?page=1&size=5",
+      "elapsed_ms": 10.5
+    },
+    {
+      "case_id": "AUTH-004a",
+      "name": "普通用户 student001 登录",
+      "expected": "HTTP 200 且返回 accessToken",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "role=internal",
+      "path": "/auth/login",
+      "elapsed_ms": 16.9
+    },
+    {
+      "case_id": "AUTH-004",
+      "name": "普通用户访问后台课程",
+      "expected": "HTTP 403",
+      "result": "PASS",
+      "http_status": 403,
+      "body_code": 403,
+      "details": "{\"code\":403,\"message\":\"FORBIDDEN_ADMIN\",\"data\":null,\"timestamp\":\"2026-05-21T12:54:50.602905Z\"}",
+      "path": "/admin/courses?page=1&size=5",
+      "elapsed_ms": 2.4
+    },
+    {
+      "case_id": "AUTH-005a",
+      "name": "外部用户 outside001 登录",
+      "expected": "HTTP 200 且返回 accessToken",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "role=external",
+      "path": "/auth/login",
+      "elapsed_ms": 20.0
+    },
+    {
+      "case_id": "AUTH-005",
+      "name": "外部/普通用户访问后台课程",
+      "expected": "HTTP 403",
+      "result": "PASS",
+      "http_status": 403,
+      "body_code": 403,
+      "details": "{\"code\":403,\"message\":\"FORBIDDEN_ADMIN\",\"data\":null,\"timestamp\":\"2026-05-21T12:54:50.624488900Z\"}",
+      "path": "/admin/courses?page=1&size=5",
+      "elapsed_ms": 2.6
+    },
+    {
+      "case_id": "LAUNCH-001",
+      "name": "课程 launch 未登录 courseId=8",
+      "expected": "HTTP 401",
+      "result": "PASS",
+      "http_status": 401,
+      "body_code": 401,
+      "details": "{\"code\":401,\"message\":\"Login required to launch course\",\"data\":null,\"timestamp\":\"2026-05-21T12:54:50.627792200Z\"}",
+      "path": "/portal/courses/8/launch",
+      "elapsed_ms": 3.1
+    },
+    {
+      "case_id": "LAUNCH-002",
+      "name": "课程 launch 登录后 courseId=8",
+      "expected": "HTTP 200 且 data.launchUrl 非空",
+      "result": "PASS",
+      "http_status": 200,
+      "body_code": 0,
+      "details": "launchUrl=https://lms.sicnu.edu.cn/course/CS110",
+      "path": "/portal/courses/8/launch",
+      "elapsed_ms": 5.4
+    }
+  ]
+}

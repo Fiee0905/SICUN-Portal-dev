@@ -1,0 +1,19 @@
+{
+  "name": "edu-portal-integration-mock",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mock CAS and course platform integration service for the education portal.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,5 @@
+home_http=200 
+courses_http=000 
+categories_http=200 
+keywords_http=200 
+admin_users_anon_http=401
