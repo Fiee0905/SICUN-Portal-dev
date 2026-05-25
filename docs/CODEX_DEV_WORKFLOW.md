@@ -122,6 +122,10 @@ Please test auth regression, CMS CRUD sync, portal display, and no-hardcoded sca
 Please submit bugs through GitHub Issues in the delivery repository.
 ```
 
+Hermes-facing workflow notes should be placed in the delivery repository or
+Issue templates. The Codex development repository should only keep the Codex
+team workflow.
+
 ## 6. Handle Hermes Feedback
 
 Hermes submits bugs and suggestions as Issues in `SICUN-Portal-delivery`.

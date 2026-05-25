@@ -3,6 +3,7 @@
 target/
 node_modules/
 dist/
+frontend/tsconfig.tsbuildinfo
 .DS_Store
 *.log
 *.class
@@ -10,3 +11,11 @@ dist/
 coverage/
 frontend/.env.local
 backend/logs/
+backend/uploads/
+integration/mock-server/node_modules/
+logs/
+figma-CMS/
+figma-export/
+bug-report-*/
+*.doc
+*.docx

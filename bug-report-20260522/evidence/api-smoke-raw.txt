@@ -1,3 +1,0 @@
-/usr/bin/bash: line 19: application/json -d "username":"admin"&&
-echo.
-: No such file or directory

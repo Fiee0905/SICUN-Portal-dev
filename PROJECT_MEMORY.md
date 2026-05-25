@@ -19,7 +19,13 @@
 - Long-lived local folders `D:\work2.0\SICUN-Portal_test` and `D:\work2.0\SICUN-Portal_handoff` are no longer needed after GitHub delivery was established; they can be deleted and regenerated temporarily when publishing.
 - Current verified clean delivery drop contains only `backend`, `frontend`, `database`, `docs`, `integration`, `qa`, `scripts`, `.gitignore`, `DELIVERY_MANIFEST.md`, `docker-compose.yml`, and `README.md`.
 - GitHub setup completed on 2026-05-25: pushed the development repository to `Fiee0905/SICUN-Portal-dev` branch `main`; pushed the first Hermes delivery drop to `Fiee0905/SICUN-Portal-delivery` branch `test-drop/20260525-01`.
-- Added role-specific GitHub handoff workflow documents: `docs/CODEX_DEV_WORKFLOW.md` for the Codex development team and `docs/HERMES_TEST_WORKFLOW.md` for the Hermes testing team. `docs/GITHUB_HANDOFF.md` is the umbrella entry point.
+- Added Codex-side GitHub handoff workflow document `docs/CODEX_DEV_WORKFLOW.md`. Hermes-facing workflow instructions should live in the delivery repository or GitHub Issue templates, not in the Codex development workspace.
+
+## 2026-05-25 Repository cleanup
+
+- Cleaned the development workspace by removing generated outputs and local-only artifacts: `backend/target`, `frontend/dist`, dependency folders, logs, runtime `backend/uploads`, historical `bug-report-*` folders, Figma export folders, empty `tools`, and the original bid `.doc` file.
+- Updated `.gitignore` so build outputs, dependency folders, logs, runtime uploads, Figma exports, bug-report folders, and Word documents do not re-enter Git history.
+- Removed `docs/HERMES_TEST_WORKFLOW.md` because Hermes-facing process documents are not owned by the Codex development team. Hermes instructions should live in the delivery repository or GitHub Issue templates; the development repo keeps only Codex-side workflow docs.
 
 ## 2026-05-22 Backend bug-report-20260522 BUG-001/BUG-002
 
