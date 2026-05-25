@@ -17,6 +17,7 @@
 - Do not give Hermes read access to the development repository if it contains Codex internal files such as `PROJECT_MEMORY.md`, `TASKS.md`, `AGENTS.md`, `pm/`, local logs, Figma exports, or bug-report work folders. GitHub read access is repository-wide enough that branch separation is not a clean confidentiality boundary.
 - Added `.handoffignore`, `.github/ISSUE_TEMPLATE`, `scripts/export-test-drop.ps1`, `scripts/publish-delivery-repo.ps1`, and `docs/GITHUB_HANDOFF.md`. `export-test-drop.ps1 -Zip` regenerates `D:\work2.0\SICUN-Portal_test` and a zip under `D:\work2.0\SICUN-Portal_handoff\releases`, excluding internal files and build/dependency outputs. Hermes should feed bug reports and suggestions back through Issues in `SICUN-Portal-delivery`.
 - Current verified clean delivery drop: `D:\work2.0\SICUN-Portal_test` contains only `backend`, `frontend`, `database`, `docs`, `integration`, `qa`, `scripts`, `.gitignore`, `DELIVERY_MANIFEST.md`, `docker-compose.yml`, and `README.md`; the latest zip generated during setup was `D:\work2.0\SICUN-Portal_handoff\releases\test-drop-20260525-172553.zip`.
+- GitHub setup completed on 2026-05-25: pushed the development repository to `Fiee0905/SICUN-Portal-dev` branch `main`; pushed the first Hermes delivery drop to `Fiee0905/SICUN-Portal-delivery` branch `test-drop/20260525-01`. Latest local export zip after script fixes: `D:\work2.0\SICUN-Portal_handoff\releases\test-drop-20260525-173653.zip`.
 
 ## 2026-05-22 Backend bug-report-20260522 BUG-001/BUG-002
 
