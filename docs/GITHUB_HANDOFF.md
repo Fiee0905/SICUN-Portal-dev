@@ -5,6 +5,11 @@
 Codex develops in `SICUN-Portal`. Hermes tests only sanitized delivery drops.
 The two teams should not read each other's internal working folders.
 
+Detailed role-specific workflows:
+
+- Codex development workflow: `docs/CODEX_DEV_WORKFLOW.md`
+- Hermes testing workflow: `docs/HERMES_TEST_WORKFLOW.md`
+
 ## Recommended Repository Layout
 
 - `SICUN-Portal-dev`: private Codex development repository.
