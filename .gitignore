@@ -14,6 +14,7 @@ backend/logs/
 backend/uploads/
 integration/mock-server/node_modules/
 logs/
+outputs/
 figma-CMS/
 figma-export/
 bug-report-*/

@@ -112,7 +112,7 @@ Figma exports, bug report work folders, and local environment files are excluded
 according to `.handoffignore`.
 "@ | Set-Content -LiteralPath $manifestPath -Encoding UTF8
 
-@"
+@'
 # Hermes Test Team Workflow
 
 This workflow is for the Hermes testing team using:
@@ -184,7 +184,7 @@ Hermes should retest only after Codex provides the next `test-drop/*` branch.
 - Do not submit fixes as direct commits to the delivery repository.
 - Do not test against the Codex development repository.
 - Do not omit the tested branch from bug reports.
-"@ | Set-Content -LiteralPath $hermesWorkflowPath -Encoding UTF8
+'@ | Set-Content -LiteralPath $hermesWorkflowPath -Encoding UTF8
 
 if ($Zip) {
     New-Item -ItemType Directory -Path $ZipRoot -Force | Out-Null
