@@ -73,11 +73,11 @@ When a version is ready for Hermes testing, generate a sanitized test drop:
 D:\work2.0\SICUN-Portal\scripts\export-test-drop.ps1 -Zip
 ```
 
-This regenerates:
+This regenerates a temporary sanitized drop:
 
 ```text
-D:\work2.0\SICUN-Portal_test
-D:\work2.0\SICUN-Portal_handoff\releases\test-drop-*.zip
+D:\work2.0\.tmp\SICUN-Portal_test
+D:\work2.0\.tmp\SICUN-Portal_handoff\releases\test-drop-*.zip
 ```
 
 The test drop includes runtime and test-facing project files only.
@@ -167,4 +167,5 @@ Publish Hermes test drop YYYYMMDD-NN
 - Do not overwrite old `test-drop/*` branches.
 - Do not accept bug reports that do not identify the tested delivery branch.
 - Do not treat frontend route guards as proof of backend permission security.
-
+- Do not keep long-lived local `SICUN-Portal_test` or `SICUN-Portal_handoff`
+  folders; they are temporary export artifacts and can be regenerated.

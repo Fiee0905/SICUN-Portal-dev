@@ -3,7 +3,7 @@ param(
     [string]$DeliveryRepoUrl,
 
     [string]$DeliveryWorktree = "D:\work2.0\SICUN-Portal_delivery_repo",
-    [string]$SourceDrop = "D:\work2.0\SICUN-Portal_test",
+    [string]$SourceDrop = "D:\work2.0\.tmp\SICUN-Portal_test",
     [string]$Branch = ("test-drop/" + (Get-Date -Format "yyyyMMdd-HHmmss")),
     [string]$CommitMessage = ("Publish Hermes test drop " + (Get-Date -Format "yyyy-MM-dd HH:mm:ss"))
 )

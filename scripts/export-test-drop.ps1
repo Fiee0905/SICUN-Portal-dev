@@ -1,7 +1,7 @@
 param(
     [string]$SourceRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path,
-    [string]$OutputRoot = "D:\work2.0\SICUN-Portal_test",
-    [string]$ZipRoot = "D:\work2.0\SICUN-Portal_handoff\releases",
+    [string]$OutputRoot = "D:\work2.0\.tmp\SICUN-Portal_test",
+    [string]$ZipRoot = "D:\work2.0\.tmp\SICUN-Portal_handoff\releases",
     [switch]$Zip
 )
 

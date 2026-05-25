@@ -28,6 +28,13 @@ Codex internal files such as `PROJECT_MEMORY.md`, `TASKS.md`, `AGENTS.md`,
    D:\work2.0\SICUN-Portal\scripts\export-test-drop.ps1 -Zip
    ```
 
+   The default export location is temporary:
+
+   ```text
+   D:\work2.0\.tmp\SICUN-Portal_test
+   D:\work2.0\.tmp\SICUN-Portal_handoff\releases
+   ```
+
 3. Publish the drop to the Hermes delivery repository:
 
    ```powershell
